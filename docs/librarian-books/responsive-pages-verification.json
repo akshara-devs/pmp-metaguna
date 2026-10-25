@@ -1,0 +1,304 @@
+{
+  "result": "passed",
+  "screens": 8,
+  "viewports": [
+    1440,
+    1280
+  ],
+  "states": [
+    "Expanded",
+    "Collapsed"
+  ],
+  "complete_screen_checks": 32,
+  "body_width_delta": 160,
+  "forms_filters_tables_resize": true,
+  "nested_containers_auto_layout": true,
+  "table_columns_aligned": true,
+  "page_overflow": false,
+  "checks": [
+    {
+      "screen": 742,
+      "state": "Expanded",
+      "viewport_width": 1440,
+      "content_width": 1128,
+      "regions": {
+        "Field / Cari koleksi": 550.0,
+        "Table / Books": 1128.0
+      }
+    },
+    {
+      "screen": 898,
+      "state": "Expanded",
+      "viewport_width": 1440,
+      "content_width": 1128,
+      "regions": {
+        "Card / Book metadata": 760.0
+      }
+    },
+    {
+      "screen": 975,
+      "state": "Expanded",
+      "viewport_width": 1440,
+      "content_width": 1128,
+      "regions": {}
+    },
+    {
+      "screen": 1072,
+      "state": "Expanded",
+      "viewport_width": 1440,
+      "content_width": 1128,
+      "regions": {
+        "Card / Book metadata": 760.0
+      }
+    },
+    {
+      "screen": 1401,
+      "state": "Expanded",
+      "viewport_width": 1440,
+      "content_width": 1128,
+      "regions": {}
+    },
+    {
+      "screen": 1516,
+      "state": "Expanded",
+      "viewport_width": 1440,
+      "content_width": 1128,
+      "regions": {
+        "Field / Cari koleksi": 550.0,
+        "Table / Books": 1128.0
+      }
+    },
+    {
+      "screen": 2106,
+      "state": "Expanded",
+      "viewport_width": 1440,
+      "content_width": 1128,
+      "regions": {
+        "Field / Cari koleksi": 550.0,
+        "Table / Books": 1128.0
+      }
+    },
+    {
+      "screen": 17179869185,
+      "state": "Expanded",
+      "viewport_width": 1440,
+      "content_width": 1128,
+      "regions": {
+        "Card / Book metadata": 760.0
+      }
+    },
+    {
+      "screen": 742,
+      "state": "Collapsed",
+      "viewport_width": 1440,
+      "content_width": 1288,
+      "regions": {
+        "Field / Cari koleksi": 710.0,
+        "Table / Books": 1288.0
+      }
+    },
+    {
+      "screen": 898,
+      "state": "Collapsed",
+      "viewport_width": 1440,
+      "content_width": 1288,
+      "regions": {
+        "Card / Book metadata": 920.0
+      }
+    },
+    {
+      "screen": 975,
+      "state": "Collapsed",
+      "viewport_width": 1440,
+      "content_width": 1288,
+      "regions": {}
+    },
+    {
+      "screen": 1072,
+      "state": "Collapsed",
+      "viewport_width": 1440,
+      "content_width": 1288,
+      "regions": {
+        "Card / Book metadata": 920.0
+      }
+    },
+    {
+      "screen": 1401,
+      "state": "Collapsed",
+      "viewport_width": 1440,
+      "content_width": 1288,
+      "regions": {}
+    },
+    {
+      "screen": 1516,
+      "state": "Collapsed",
+      "viewport_width": 1440,
+      "content_width": 1288,
+      "regions": {
+        "Field / Cari koleksi": 710.0,
+        "Table / Books": 1288.0
+      }
+    },
+    {
+      "screen": 2106,
+      "state": "Collapsed",
+      "viewport_width": 1440,
+      "content_width": 1288,
+      "regions": {
+        "Field / Cari koleksi": 710.0,
+        "Table / Books": 1288.0
+      }
+    },
+    {
+      "screen": 17179869185,
+      "state": "Collapsed",
+      "viewport_width": 1440,
+      "content_width": 1288,
+      "regions": {
+        "Card / Book metadata": 920.0
+      }
+    },
+    {
+      "screen": 742,
+      "state": "Expanded",
+      "viewport_width": 1280,
+      "content_width": 968,
+      "regions": {
+        "Field / Cari koleksi": 390.0,
+        "Table / Books": 968.0
+      }
+    },
+    {
+      "screen": 898,
+      "state": "Expanded",
+      "viewport_width": 1280,
+      "content_width": 968,
+      "regions": {
+        "Card / Book metadata": 600.0
+      }
+    },
+    {
+      "screen": 975,
+      "state": "Expanded",
+      "viewport_width": 1280,
+      "content_width": 968,
+      "regions": {}
+    },
+    {
+      "screen": 1072,
+      "state": "Expanded",
+      "viewport_width": 1280,
+      "content_width": 968,
+      "regions": {
+        "Card / Book metadata": 600.0
+      }
+    },
+    {
+      "screen": 1401,
+      "state": "Expanded",
+      "viewport_width": 1280,
+      "content_width": 968,
+      "regions": {}
+    },
+    {
+      "screen": 1516,
+      "state": "Expanded",
+      "viewport_width": 1280,
+      "content_width": 968,
+      "regions": {
+        "Field / Cari koleksi": 390.0,
+        "Table / Books": 968.0
+      }
+    },
+    {
+      "screen": 2106,
+      "state": "Expanded",
+      "viewport_width": 1280,
+      "content_width": 968,
+      "regions": {
+        "Field / Cari koleksi": 390.0,
+        "Table / Books": 968.0
+      }
+    },
+    {
+      "screen": 17179869185,
+      "state": "Expanded",
+      "viewport_width": 1280,
+      "content_width": 968,
+      "regions": {
+        "Card / Book metadata": 600.0
+      }
+    },
+    {
+      "screen": 742,
+      "state": "Collapsed",
+      "viewport_width": 1280,
+      "content_width": 1128,
+      "regions": {
+        "Field / Cari koleksi": 550.0,
+        "Table / Books": 1128.0
+      }
+    },
+    {
+      "screen": 898,
+      "state": "Collapsed",
+      "viewport_width": 1280,
+      "content_width": 1128,
+      "regions": {
+        "Card / Book metadata": 760.0
+      }
+    },
+    {
+      "screen": 975,
+      "state": "Collapsed",
+      "viewport_width": 1280,
+      "content_width": 1128,
+      "regions": {}
+    },
+    {
+      "screen": 1072,
+      "state": "Collapsed",
+      "viewport_width": 1280,
+      "content_width": 1128,
+      "regions": {
+        "Card / Book metadata": 760.0
+      }
+    },
+    {
+      "screen": 1401,
+      "state": "Collapsed",
+      "viewport_width": 1280,
+      "content_width": 1128,
+      "regions": {}
+    },
+    {
+      "screen": 1516,
+      "state": "Collapsed",
+      "viewport_width": 1280,
+      "content_width": 1128,
+      "regions": {
+        "Field / Cari koleksi": 550.0,
+        "Table / Books": 1128.0
+      }
+    },
+    {
+      "screen": 2106,
+      "state": "Collapsed",
+      "viewport_width": 1280,
+      "content_width": 1128,
+      "regions": {
+        "Field / Cari koleksi": 550.0,
+        "Table / Books": 1128.0
+      }
+    },
+    {
+      "screen": 17179869185,
+      "state": "Collapsed",
+      "viewport_width": 1280,
+      "content_width": 1128,
+      "regions": {
+        "Card / Book metadata": 760.0
+      }
+    }
+  ]
+}

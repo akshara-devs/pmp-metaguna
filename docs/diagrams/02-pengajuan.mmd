@@ -1,0 +1,21 @@
+sequenceDiagram
+    autonumber
+    actor P0 as Mahasiswa
+    participant P1 as Web PMP
+    participant P2 as Library Service
+    participant P3 as Database
+    P0->>P1: Pilih judul dan ajukan
+    P1->>P2: Kirim ID buku
+    P2->>P3: Baca aturan, kuota, antrean, status buku
+    P3-->>P2: Hasil validasi 
+    alt [akun dan syarat valid]
+    P2->>P3: Simpan sebagai WAITING atau QUEUED
+    P3-->>P2: ID dan posisi antrean
+    P2-->>P1: Pengajuan tercatat
+    P1-->>P0: Tampilkan status dan posisi
+    else [syarat tidak terpenuhi]
+    P2-->>P1: Tolak beserta alasan
+    P1-->>P0: Tampilkan alasan
+    end
+    Note over P0,P3: Awal transaksi: kunci akun dan judul, lalu validasi kembali. Commit setelah data tersimpan.
+    Note over P0,P3: WAITING jika buku tersedia; QUEUED jika tidak. Keduanya belum menahan buku atau kuota.

@@ -1,0 +1,8 @@
+{
+  "result": "passed",
+  "menu_instances": 50,
+  "distinct_icons": 5,
+  "auto_layout_direction_round_trip": true,
+  "icon_swap_round_trip": true,
+  "reopen": true
+}

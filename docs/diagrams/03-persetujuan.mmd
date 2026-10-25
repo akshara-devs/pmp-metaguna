@@ -1,0 +1,21 @@
+sequenceDiagram
+    autonumber
+    actor P0 as Pustakawan
+    participant P1 as Web UI
+    participant P2 as Library Service
+    participant P3 as Database
+    P0->>P1: Pilih pengajuan tertua
+    P1->>P2: Setujui pengajuan
+    P2->>P3: Kunci akun, buku, dan pengajuan
+    P3-->>P2: Kuota, kelayakan, status buku, urutan
+    alt [urutan, buku, dan syarat valid]
+    P2->>P3: Simpan READY_FOR_PICKUP dan batas ambil
+    P3-->>P2: Penyiapan dan versi kebijakan tersimpan
+    P2-->>P1: Persetujuan berhasil
+    P1-->>P0: Tampilkan ISBN dan batas ambil
+    else [buku, urutan, atau syarat tidak valid]
+    P2-->>P1: Tolak tindakan beserta alasan
+    P1-->>P0: Tampilkan konflik atau ketidaklayakan
+    end
+    Note over P0,P3: Satu buku hanya boleh disiapkan untuk satu pemohon. Commit status + kebijakan; batas awal 2 hari.
+    Note over P0,P3: Jika pemohon tidak layak, petugas dapat menolak dengan alasan. Konflik ketersediaan tidak menolak pemohon otomatis.

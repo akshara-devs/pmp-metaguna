@@ -1,0 +1,215 @@
+{
+  "links": [
+    {
+      "component": "Alert / default",
+      "importPath": "@/components/ui/alert",
+      "language": "react",
+      "name": "Alert",
+      "template": "<Alert />"
+    },
+    {
+      "component": "Alert / default / warning copy",
+      "importPath": "@/components/ui/alert",
+      "language": "react",
+      "name": "Alert",
+      "template": "<Alert />"
+    },
+    {
+      "component": "Alert / destructive",
+      "importPath": "@/components/ui/alert",
+      "language": "react",
+      "name": "Alert",
+      "template": "<Alert />"
+    },
+    {
+      "component": "AlertDialog / Cancel request",
+      "importPath": "@/components/ui/alert-dialog",
+      "language": "react",
+      "name": "AlertDialog",
+      "template": "<AlertDialog />"
+    },
+    {
+      "component": "Badge / Library status",
+      "importPath": "@/components/ui/badge",
+      "language": "react",
+      "name": "Badge",
+      "template": "<Badge status={status} variant={variant} />"
+    },
+    {
+      "component": "Book card",
+      "importPath": "@/components/ui/card",
+      "language": "react",
+      "name": "Card",
+      "template": "<Card state={state} availability={availability} category={category} coverTitle={coverTitle} title={title} />"
+    },
+    {
+      "component": "Button",
+      "importPath": "@/components/ui/button",
+      "language": "react",
+      "name": "Button",
+      "template": "<Button variant={variant} size={size} state={state} label={label} />"
+    },
+    {
+      "component": "Checkbox",
+      "importPath": "@/components/ui/checkbox",
+      "language": "react",
+      "name": "Checkbox",
+      "template": "<Checkbox checked={checked} label={label} />"
+    },
+    {
+      "component": "Empty / Loans",
+      "importPath": "@/components/ui/empty",
+      "language": "react",
+      "name": "Empty",
+      "template": "<Empty />"
+    },
+    {
+      "component": "Field",
+      "importPath": "@/components/ui/field",
+      "language": "react",
+      "name": "Field",
+      "template": "<Field state={state} label={label} />"
+    },
+    {
+      "component": "Lucide/Bell",
+      "importPath": "lucide-react",
+      "language": "react",
+      "name": "Bell",
+      "template": "<Bell />"
+    },
+    {
+      "component": "Lucide/BookOpen",
+      "importPath": "lucide-react",
+      "language": "react",
+      "name": "BookOpen",
+      "template": "<BookOpen />"
+    },
+    {
+      "component": "Lucide/Check",
+      "importPath": "lucide-react",
+      "language": "react",
+      "name": "Check",
+      "template": "<Check />"
+    },
+    {
+      "component": "Lucide/ChevronDown",
+      "importPath": "lucide-react",
+      "language": "react",
+      "name": "ChevronDown",
+      "template": "<ChevronDown />"
+    },
+    {
+      "component": "Lucide/ChevronRight",
+      "importPath": "lucide-react",
+      "language": "react",
+      "name": "ChevronRight",
+      "template": "<ChevronRight />"
+    },
+    {
+      "component": "Lucide/Clock3",
+      "importPath": "lucide-react",
+      "language": "react",
+      "name": "Clock3",
+      "template": "<Clock3 />"
+    },
+    {
+      "component": "Lucide/Info",
+      "importPath": "lucide-react",
+      "language": "react",
+      "name": "Info",
+      "template": "<Info />"
+    },
+    {
+      "component": "Lucide/ListFilter",
+      "importPath": "lucide-react",
+      "language": "react",
+      "name": "ListFilter",
+      "template": "<ListFilter />"
+    },
+    {
+      "component": "Lucide/ListOrdered",
+      "importPath": "lucide-react",
+      "language": "react",
+      "name": "ListOrdered",
+      "template": "<ListOrdered />"
+    },
+    {
+      "component": "Lucide/LogOut",
+      "importPath": "lucide-react",
+      "language": "react",
+      "name": "LogOut",
+      "template": "<LogOut />"
+    },
+    {
+      "component": "Lucide/Plus",
+      "importPath": "lucide-react",
+      "language": "react",
+      "name": "Plus",
+      "template": "<Plus />"
+    },
+    {
+      "component": "Lucide/Search",
+      "importPath": "lucide-react",
+      "language": "react",
+      "name": "Search",
+      "template": "<Search />"
+    },
+    {
+      "component": "Lucide/Settings",
+      "importPath": "lucide-react",
+      "language": "react",
+      "name": "Settings",
+      "template": "<Settings />"
+    },
+    {
+      "component": "Lucide/UserRound",
+      "importPath": "lucide-react",
+      "language": "react",
+      "name": "UserRound",
+      "template": "<UserRound />"
+    },
+    {
+      "component": "Lucide/Wallet",
+      "importPath": "lucide-react",
+      "language": "react",
+      "name": "Wallet",
+      "template": "<Wallet />"
+    },
+    {
+      "component": "Lucide/X",
+      "importPath": "lucide-react",
+      "language": "react",
+      "name": "X",
+      "template": "<X />"
+    },
+    {
+      "component": "SidebarMenuButton",
+      "importPath": "@/components/ui/sidebar",
+      "language": "react",
+      "name": "SidebarMenuButton",
+      "template": "<SidebarMenuButton state={state} label={label} />"
+    },
+    {
+      "component": "Sonner / success",
+      "importPath": "@/components/ui/sonner",
+      "language": "react",
+      "name": "Toaster",
+      "template": "<Toaster />"
+    },
+    {
+      "component": "Switch",
+      "importPath": "@/components/ui/switch",
+      "language": "react",
+      "name": "Switch",
+      "template": "<Switch enabled={enabled} label={label} />"
+    },
+    {
+      "component": "Table / TableRow",
+      "importPath": "@/components/ui/table",
+      "language": "react",
+      "name": "Table",
+      "template": "<Table book={book} dueDate={dueDate} member={member} />"
+    }
+  ],
+  "version": 1
+}

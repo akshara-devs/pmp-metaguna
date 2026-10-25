@@ -1,0 +1,248 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><title>BRD Perpus Merah Putih</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&amp;family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"><style>body{font-family:Roboto,Arial,sans-serif;color:#003E51;max-width:1000px;margin:40px auto;line-height:1.6;padding:0 20px}h1,h2,h3,h4{font-family:Inter,Arial,sans-serif}h1,h2{color:#00758D}table{border-collapse:collapse;width:100%;font-size:14px;margin:20px 0}th,td{border:1px solid #ccd8dc;text-align:left;padding:10px;vertical-align:top}th{background:#F7F7F7}a{color:#00758D}@media print{body{margin:0;max-width:none}h2,h3{break-after:avoid}tr{break-inside:avoid}}</style><style>.brd-cover{max-width:640px;min-height:850px;font-family:Arial,sans-serif;break-after:page}.cover-band{background:#003E51;color:white;padding:12px 16px;font-size:13px;font-weight:bold;letter-spacing:1px}.brd-cover .cover-kicker{margin:48px 0 20px;color:#00758D;font-size:13px;font-weight:bold;letter-spacing:2px}.brd-cover h1{font-family:Arial,sans-serif;font-size:64px;line-height:1.13;color:#003E51;margin:0 0 34px}.brd-cover .cover-summary{font-size:16px;line-height:1.6;color:#696F80}.brd-cover .cover-kind{font-weight:bold;font-size:23px;line-height:1.4;color:#00758D;margin-top:52px}.brd-cover .cover-scope{font-size:11px;color:#696F80;margin-top:44px;padding-bottom:16px;border-bottom:2px solid #00758D}.brd-cover .cover-meta{display:flex;justify-content:space-between;gap:16px;font-size:14px;margin-top:28px}.brd-cover .cover-status{color:#696F80;font-size:13px;margin-top:10px}.brd-cover .cover-foot{font-size:10px;letter-spacing:1px;color:#696F80;margin-top:80px}</style></head><body><section class="brd-cover" aria-label="Cover BRD">
+<div class="cover-band">PMP-01　 /　 PERPUSTAKAAN KAMPUS</div>
+<p class="cover-kicker">PROJECT DOCUMENT</p>
+<h1>Perpus<br>Merah Putih</h1>
+<p class="cover-summary">Aplikasi web untuk mengelola buku<br>dan layanan peminjaman perpustakaan kampus.</p>
+<p class="cover-kind">BUSINESS REQUIREMENTS<br>DOCUMENT</p>
+<p class="cover-scope">SCOPE / BOOK MANAGEMENT &amp; BORROWING</p>
+<p class="cover-meta"><span>Version 1.3</span><span>25 Oktober 2026</span></p>
+<p class="cover-meta cover-status"><span>Document status</span><span>Draf untuk peninjauan</span></p>
+<p class="cover-foot">BUSINESS REQUIREMENTS DOCUMENT / BRD</p></section><h2>Table of contents</h2>
+<ol>
+<li>Business Requirements Definition</li>
+<li>Introduction</li>
+<li>Scope</li>
+<li>System Perspective</li>
+<li>Business Requirements</li>
+<li>Acknowledgement &amp; Approval</li>
+</ol>
+<h2>1. Business Requirements Definition</h2>
+<table>
+<thead>
+<tr>
+<th>Project information</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Project ID</td>
+<td>PMP-01</td>
+</tr>
+<tr>
+<td>Project name</td>
+<td>Perpus Merah Putih</td>
+</tr>
+<tr>
+<td>Requester</td>
+<td>Pemilik proyek tugas kuliah</td>
+</tr>
+<tr>
+<td>System / Application</td>
+<td>Aplikasi web perpustakaan kampus</td>
+</tr>
+<tr>
+<td>Users</td>
+<td>Mahasiswa dan pustakawan</td>
+</tr>
+<tr>
+<td>Document status</td>
+<td>Draf versi 1.3, belum ditandatangani</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>Date</th>
+<th>Version summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>24 Oktober 2026</td>
+<td>Penyusunan kebutuhan awal.</td>
+</tr>
+<tr>
+<td>1.1</td>
+<td>24 Oktober 2026</td>
+<td>Penyederhanaan BRD mengikuti struktur referensi.</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>24 Oktober 2026</td>
+<td>Judul bagian berbahasa Inggris dan seluruh tabel diberi garis lengkap.</td>
+</tr>
+<tr>
+<td>1.3</td>
+<td>25 Oktober 2026</td>
+<td>Satu buku fisik per judul, ISBN wajib dan unik, serta penghapusan pencatatan eksemplar dan fitur perpanjangan pinjaman.</td>
+</tr>
+</tbody>
+</table>
+<h2>2. Introduction</h2>
+<h3>2.1. Background</h3>
+<p>Perpustakaan kampus membutuhkan aplikasi untuk mencatat koleksi buku, memproses pengajuan pinjaman, dan memantau pengembalian. Mahasiswa dapat mencari buku serta mengajukan peminjaman secara online. Pustakawan dapat mengelola koleksi dan mencatat transaksi dalam satu sistem.</p>
+<h3>2.2. Objective &amp; Expected Improvements</h3>
+<ol>
+<li>Memudahkan pencarian buku dan pemeriksaan ketersediaannya.</li>
+<li>Memudahkan mahasiswa mengajukan pinjaman dan melihat statusnya.</li>
+<li>Membantu pustakawan mencatat penyerahan, pengembalian, dan keterlambatan.</li>
+<li>Menertibkan antrean reservasi dan pencatatan denda.</li>
+<li>Memungkinkan pustakawan mengubah aturan peminjaman sesuai kebutuhan.</li>
+</ol>
+<h3>2.3. Business Process Overview</h3>
+<p>Mahasiswa masuk ke aplikasi, mencari buku, lalu mengajukan pinjaman. Sistem menempatkan pengajuan pada daftar tunggu atau antrean sesuai ketersediaan. Pustakawan memeriksa pengajuan berdasarkan urutan masuk dan menyiapkan buku yang disetujui.</p>
+<p>Mahasiswa mengambil buku di perpustakaan. Masa pinjam dimulai ketika pustakawan mencatat penyerahan. Saat buku kembali, pustakawan mencatat pengembalian dan sistem menghitung denda jika terlambat.</p>
+<h4>2.3.1. Current Business Process</h4>
+<p>Proses yang digunakan perpustakaan saat ini belum dikonfirmasi melalui observasi. Pencatatan manual, seperti pemeriksaan buku di rak dan pencatatan transaksi oleh pustakawan, hanya menjadi gambaran pembanding bagi rancangan aplikasi.</p>
+<h2>3. Scope</h2>
+<h3>3.1. In Scope</h3>
+<ol>
+<li>Akun mahasiswa dan pustakawan dengan hak akses berbeda.</li>
+<li>Pengelolaan mahasiswa, kategori, dan buku dengan ISBN unik.</li>
+<li>Katalog buku, pencarian, dan informasi ketersediaan.</li>
+<li>Pengajuan pinjaman online, persetujuan, pembatalan, dan antrean reservasi.</li>
+<li>Pencatatan pengambilan buku, pengembalian, serta riwayat pinjaman.</li>
+<li>Denda keterlambatan dan pencatatan pelunasan.</li>
+<li>Pengaturan aturan pinjam dan ringkasan transaksi perpustakaan.</li>
+</ol>
+<h3>3.2. Out of Scope</h3>
+<ol>
+<li>Aplikasi seluler native, buku elektronik, dan layanan lintas perpustakaan.</li>
+<li>Integrasi sistem akademik, SSO kampus, RFID, dan payment gateway.</li>
+<li>Pembayaran online, cicilan, serta penghapusan denda.</li>
+<li>Penggantian buku hilang atau rusak dan pengadaan koleksi.</li>
+<li>Notifikasi melalui email, SMS, atau WhatsApp. Status tersedia dalam aplikasi.</li>
+<li>Perpanjangan pinjaman.</li>
+</ol>
+<h2>4. System Perspective</h2>
+<h3>4.1. Assumptions</h3>
+<ol>
+<li>Sistem digunakan oleh satu perpustakaan kampus untuk koleksi fisik.</li>
+<li>Pengguna memiliki browser dan koneksi ke server aplikasi.</li>
+<li>Pustakawan memverifikasi identitas mahasiswa dan kondisi buku.</li>
+<li>Akun mahasiswa dikelola pustakawan. Akun pustakawan pertama disiapkan pengelola teknis.</li>
+<li>Perhitungan waktu menggunakan hari kalender dalam zona waktu Asia/Jakarta.</li>
+</ol>
+<h3>4.2. Exclusions</h3>
+<p>Pemeriksaan fisik buku dan penerimaan pembayaran tetap dilakukan pustakawan. Aplikasi hanya mencatat hasilnya. Pembayaran denda dilakukan di luar aplikasi dan dicatat setelah lunas. Migrasi data lama serta pemeliharaan perangkat keras tidak termasuk dalam proyek awal.</p>
+<h3>4.3. Constraints</h3>
+<ol>
+<li>Pengembangan dibatasi pada dua peran, yaitu mahasiswa dan pustakawan.</li>
+<li>Satu data buku mewakili satu buku fisik dengan ISBN wajib dan unik. Setiap pengajuan memuat satu buku dan menghasilkan paling banyak satu pinjaman.</li>
+<li>Jadwal, anggaran, dan teknologi implementasi belum ditetapkan.</li>
+<li>Ketersediaan aplikasi bergantung pada server dan jaringan yang digunakan.</li>
+</ol>
+<h2>5. Business Requirements</h2>
+<h3>5.1. Functional Requirements</h3>
+<ol>
+<li><strong>FR-01. Autentikasi.</strong> Pengguna dapat masuk dan keluar. Akses dibatasi berdasarkan peran, status akun, dan kepemilikan transaksi.</li>
+<li><strong>FR-02. Data mahasiswa.</strong> Pustakawan dapat menambah, memperbarui, dan menonaktifkan akun mahasiswa. NIM dan email harus unik.</li>
+<li><strong>FR-03. Data buku.</strong> Pustakawan dapat mengelola kategori, judul, penulis, ISBN wajib dan unik, penerbit, serta tahun terbit. ISBN yang sama tidak boleh dibuat sebagai buku lain.</li>
+<li><strong>FR-04. Ketersediaan buku.</strong> Satu judul hanya memiliki satu buku fisik. Buku tersedia jika aktif, belum disiapkan untuk pengambilan, dan tidak sedang dipinjam. Tidak ada tabel eksemplar, kode inventaris, atau jumlah stok.</li>
+<li><strong>FR-05. Katalog.</strong> Pengguna dapat mencari buku dan melihat status tersedia, siap diambil, dipinjam, atau nonaktif.</li>
+<li><strong>FR-06. Pengajuan online.</strong> Mahasiswa dapat mengajukan pinjaman dan melihat status pengajuannya.</li>
+<li><strong>FR-07. Antrean reservasi.</strong> Sistem mengurutkan pengajuan per judul berdasarkan waktu masuk.</li>
+<li><strong>FR-08. Persetujuan.</strong> Pustakawan dapat menyetujui atau menolak pengajuan dengan alasan yang jelas.</li>
+<li><strong>FR-09. Pembatalan.</strong> Mahasiswa dapat membatalkan pengajuan sebelum penyerahan. Pengajuan yang melewati batas pengambilan kedaluwarsa dan melepas buku.</li>
+<li><strong>FR-10. Penyerahan.</strong> Pustakawan mencatat pengambilan buku. Sistem membuat pinjaman dan menetapkan tanggal jatuh tempo.</li>
+<li><strong>FR-11. Pengembalian.</strong> Pustakawan mencatat waktu kembali, kondisi buku, dan penyelesaian pinjaman.</li>
+<li><strong>FR-12. Denda.</strong> Sistem menghitung denda keterlambatan. Pustakawan mencatat pelunasan penuh beserta referensi pembayaran.</li>
+<li><strong>FR-13. Pengaturan.</strong> Pustakawan dapat mengubah angka kebijakan berikut. Perubahan tidak mengubah ketentuan pinjaman lama.</li>
+<li><strong>FR-14. Ringkasan dan riwayat.</strong> Pustakawan dapat melihat seluruh transaksi. Mahasiswa hanya dapat melihat transaksi miliknya.</li>
+</ol>
+<p>Aturan awal yang telah disepakati adalah sebagai berikut.</p>
+<table>
+<thead>
+<tr>
+<th>Business rule</th>
+<th>Initial value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Batas buku</td>
+<td>2 buku per mahasiswa</td>
+</tr>
+<tr>
+<td>Masa pinjam</td>
+<td>5 hari kalender sejak penyerahan</td>
+</tr>
+<tr>
+<td>Denda keterlambatan</td>
+<td>Rp1.000 per buku per hari kalender</td>
+</tr>
+<tr>
+<td>Waktu pengambilan</td>
+<td>2 hari kalender sejak persetujuan</td>
+</tr>
+</tbody>
+</table>
+<p>Kuota terpakai mencakup buku yang sedang dipinjam dan buku yang sudah disiapkan. Pengajuan yang masih menunggu atau mengantre belum memakai kuota. Akun nonaktif, pinjaman terlambat, denda belum lunas, kuota penuh, atau pengajuan ganda menghalangi pinjaman baru. Sistem memeriksa ulang kelayakan saat persetujuan dan penyerahan.</p>
+<p>Batas pengambilan dan jatuh tempo berlaku sampai akhir tanggal yang ditetapkan dalam WIB. Fitur perpanjangan pinjaman tidak termasuk dalam rancangan ini.</p>
+<h3>5.2. Non-functional Requirements</h3>
+<ol>
+<li><strong>NFR-01. Keamanan.</strong> Kata sandi disimpan sebagai hash. Sistem memeriksa hak akses pada server dan menggunakan HTTPS saat digunakan secara online.</li>
+<li><strong>NFR-02. Integritas data.</strong> Satu buku tidak dapat disiapkan atau dipinjam oleh dua mahasiswa bersamaan. ISBN wajib unik. Pengiriman ulang transaksi tidak menggandakan pencatatan.</li>
+<li><strong>NFR-03. Kinerja.</strong> Target waktu respons pencarian dan riwayat adalah maksimal 2 detik untuk 95% permintaan pada pengujian 20 pengguna bersamaan, 5.000 buku dengan ISBN berbeda.</li>
+<li><strong>NFR-04. Kemudahan penggunaan.</strong> Tampilan dapat digunakan pada komputer dan ponsel, dengan formulir berlabel serta pesan kesalahan yang jelas.</li>
+<li><strong>NFR-05. Pencadangan.</strong> Data dicadangkan setiap hari dan dapat dipulihkan dari cadangan terakhir.</li>
+<li><strong>NFR-06. Ketepatan waktu.</strong> Perhitungan jatuh tempo, pengambilan, dan keterlambatan konsisten dalam zona waktu Asia/Jakarta.</li>
+<li><strong>NFR-07. Riwayat aktivitas.</strong> Sistem menyimpan pelaku dan waktu transaksi penting agar perubahan dapat ditelusuri.</li>
+</ol>
+<p>Target tersebut menjadi acuan pengujian saat implementasi. Aplikasi belum dibangun atau diuji. Rincian aturan, skenario penerimaan, dan hubungan kebutuhan dengan diagram tersedia pada dokumen Spesifikasi-detail.md. ERD dan diagram sequence disediakan terpisah.</p>
+<h2>6. Acknowledgement &amp; Approval</h2>
+<h3>6.1. Acknowledgement</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Role</th>
+<th>Date</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Belum diisi</td>
+<td>Perwakilan pustakawan</td>
+<td>Belum diisi</td>
+<td>Belum diisi</td>
+</tr>
+<tr>
+<td>Belum diisi</td>
+<td>Perwakilan mahasiswa</td>
+<td>Belum diisi</td>
+<td>Belum diisi</td>
+</tr>
+</tbody>
+</table>
+<h3>6.2. Approval</h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Role</th>
+<th>Date</th>
+<th>Signature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Belum diisi</td>
+<td>Pemilik proyek</td>
+<td>Belum diisi</td>
+<td>Belum diisi</td>
+</tr>
+<tr>
+<td>Belum diisi</td>
+<td>Dosen pembimbing</td>
+<td>Belum diisi</td>
+<td>Belum diisi</td>
+</tr>
+</tbody>
+</table>
+<p>Fitur dan angka kebijakan telah dikonfirmasi pemilik proyek melalui percakapan. Persetujuan formal dokumen belum diberikan.</p></body></html>

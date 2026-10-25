@@ -1,0 +1,22 @@
+sequenceDiagram
+    autonumber
+    actor P0 as Pustakawan
+    participant P1 as Web UI
+    participant P2 as Library Service
+    participant P3 as Database
+    P0->>P1: Verifikasi mahasiswa dan ISBN
+    P1->>P2: Konfirmasi penyerahan
+    P2->>P3: Kunci buku; cek status, batas, kuota
+    P3-->>P2: Hasil validasi dan kebijakan terbaru
+    alt [buku disiapkan dan pemohon valid]
+    P2->>P3: Buat pinjaman; pengajuan COMPLETED
+    P3-->>P2: ID pinjaman dan jatuh tempo
+    P2-->>P1: Penyerahan tercatat
+    P1-->>P0: Tampilkan bukti dan jatuh tempo
+    else [kedaluwarsa atau syarat tidak valid]
+    P2->>P3: Kedaluwarsa? Lepaskan penyiapan buku
+    P3-->>P2: Status akhir atau alasan penolakan
+    P2-->>P1: Tolak penyerahan beserta alasan
+    end
+    Note over P0,P3: Pinjaman dimulai saat penyerahan. Versi kebijakan pinjaman diambil saat penyerahan, bukan saat pengajuan.
+    Note over P0,P3: Batas awal 5 hari. Jika kuota turun, persetujuan lama tidak dibatalkan otomatis; petugas membatalkannya.

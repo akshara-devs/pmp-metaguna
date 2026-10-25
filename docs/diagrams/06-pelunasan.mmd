@@ -1,0 +1,21 @@
+sequenceDiagram
+    autonumber
+    actor P0 as Pustakawan
+    participant P1 as Web UI
+    participant P2 as Library Service
+    participant P3 as Database
+    P0->>P1: Verifikasi pembayaran penuh di luar aplikasi
+    P1->>P2: Catat pelunasan dan referensi bukti
+    P2->>P3: Kunci tagihan dan periksa status
+    P3-->>P2: Jumlah dan status tagihan
+    alt [tagihan belum lunas dan bukti valid]
+    P2->>P3: Simpan petugas, waktu, referensi bayar
+    P3-->>P2: Commit tagihan lunas
+    P2-->>P1: Pelunasan tercatat
+    P1-->>P0: Tampilkan bukti pencatatan
+    else [tagihan sudah lunas, kiriman ulang]
+    P2-->>P1: Kembalikan status yang sudah lunas
+    P1-->>P0: Tidak mencatat pelunasan kedua
+    end
+    Note over P0,P3: Aplikasi hanya mencatat pelunasan penuh. Tidak memproses pembayaran, cicilan, atau penghapusan denda.
+    Note over P0,P3: Bukti kosong atau jumlah tidak sesuai ditolak sebelum penulisan. Hanya pustakawan dapat mencatat lunas.

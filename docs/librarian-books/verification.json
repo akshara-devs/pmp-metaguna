@@ -1,0 +1,18 @@
+{
+  "result": "passed",
+  "screens": 8,
+  "modes": [
+    "Light",
+    "Dark"
+  ],
+  "one_physical_book_per_isbn": true,
+  "isbn_required_and_unique": true,
+  "copy_inventory_removed": true,
+  "loan_renewals_removed": true,
+  "lending_policy_controls": 4,
+  "native_instances": 207,
+  "centered_buttons": 37,
+  "navigation_links": 26,
+  "responsive_pngs": 32,
+  "pdf_pages": 16
+}

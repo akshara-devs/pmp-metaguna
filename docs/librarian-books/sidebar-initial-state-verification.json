@@ -1,0 +1,88 @@
+{
+  "result": "passed",
+  "fresh_initial_variants": [
+    "Expanded",
+    "Collapsed"
+  ],
+  "switching_methods": [
+    "instance.setProperties",
+    "instance.swap"
+  ],
+  "transitions": 12,
+  "icon_alignment_checks": 60,
+  "identical_padding_alignment_icon_position": true,
+  "checks": [
+    {
+      "initial": "Expanded",
+      "method": "instance.setProperties",
+      "state": "Collapsed",
+      "aligned_icons": 5
+    },
+    {
+      "initial": "Expanded",
+      "method": "instance.setProperties",
+      "state": "Expanded",
+      "aligned_icons": 5
+    },
+    {
+      "initial": "Expanded",
+      "method": "instance.setProperties",
+      "state": "Collapsed",
+      "aligned_icons": 5
+    },
+    {
+      "initial": "Collapsed",
+      "method": "instance.setProperties",
+      "state": "Expanded",
+      "aligned_icons": 5
+    },
+    {
+      "initial": "Collapsed",
+      "method": "instance.setProperties",
+      "state": "Collapsed",
+      "aligned_icons": 5
+    },
+    {
+      "initial": "Collapsed",
+      "method": "instance.setProperties",
+      "state": "Expanded",
+      "aligned_icons": 5
+    },
+    {
+      "initial": "Expanded",
+      "method": "instance.swap",
+      "state": "Collapsed",
+      "aligned_icons": 5
+    },
+    {
+      "initial": "Expanded",
+      "method": "instance.swap",
+      "state": "Expanded",
+      "aligned_icons": 5
+    },
+    {
+      "initial": "Expanded",
+      "method": "instance.swap",
+      "state": "Collapsed",
+      "aligned_icons": 5
+    },
+    {
+      "initial": "Collapsed",
+      "method": "instance.swap",
+      "state": "Expanded",
+      "aligned_icons": 5
+    },
+    {
+      "initial": "Collapsed",
+      "method": "instance.swap",
+      "state": "Collapsed",
+      "aligned_icons": 5
+    },
+    {
+      "initial": "Collapsed",
+      "method": "instance.swap",
+      "state": "Expanded",
+      "aligned_icons": 5
+    }
+  ]
+}

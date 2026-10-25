@@ -1,0 +1,93 @@
+{
+  "result": "passed",
+  "screens": 8,
+  "states": [
+    "Collapsed",
+    "Expanded"
+  ],
+  "menu_alignment_checks": 80,
+  "navbar_reflow": true,
+  "prototype_toggle_targets": true,
+  "checks": [
+    {
+      "screen": 742,
+      "state": "Collapsed",
+      "aligned_icons": 5
+    },
+    {
+      "screen": 898,
+      "state": "Collapsed",
+      "aligned_icons": 5
+    },
+    {
+      "screen": 975,
+      "state": "Collapsed",
+      "aligned_icons": 5
+    },
+    {
+      "screen": 1072,
+      "state": "Collapsed",
+      "aligned_icons": 5
+    },
+    {
+      "screen": 1401,
+      "state": "Collapsed",
+      "aligned_icons": 5
+    },
+    {
+      "screen": 1516,
+      "state": "Collapsed",
+      "aligned_icons": 5
+    },
+    {
+      "screen": 2106,
+      "state": "Collapsed",
+      "aligned_icons": 5
+    },
+    {
+      "screen": 17179869185,
+      "state": "Collapsed",
+      "aligned_icons": 5
+    },
+    {
+      "screen": 742,
+      "state": "Expanded",
+      "aligned_icons": 5
+    },
+    {
+      "screen": 898,
+      "state": "Expanded",
+      "aligned_icons": 5
+    },
+    {
+      "screen": 975,
+      "state": "Expanded",
+      "aligned_icons": 5
+    },
+    {
+      "screen": 1072,
+      "state": "Expanded",
+      "aligned_icons": 5
+    },
+    {
+      "screen": 1401,
+      "state": "Expanded",
+      "aligned_icons": 5
+    },
+    {
+      "screen": 1516,
+      "state": "Expanded",
+      "aligned_icons": 5
+    },
+    {
+      "screen": 2106,
+      "state": "Expanded",
+      "aligned_icons": 5
+    },
+    {
+      "screen": 17179869185,
+      "state": "Expanded",
+      "aligned_icons": 5
+    }
+  ]
+}

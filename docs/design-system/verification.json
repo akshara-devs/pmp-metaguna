@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "component_library": "shadcn/ui New York v4 / Radix",
+  "exact_source_tokens_per_mode": 44,
+  "source_colors_modified": false,
+  "modes": [
+    "Light",
+    "Dark"
+  ],
+  "pages": 6,
+  "main_components": 71,
+  "component_sets": 8,
+  "instances": 266,
+  "variables": 93,
+  "styles": 15,
+  "exported_boards_and_screens": 14,
+  "official_registry_snapshots": 18,
+  "code_connections": 30,
+  "standard_alert_and_badge": true,
+  "nested_button_instances_height": 36,
+  "editable_card_slots": true,
+  "vertically_centered_button_children": 73,
+  "source_fonts_available": [
+    "Inter Tight",
+    "DM Sans",
+    "Space Mono"
+  ],
+  "raw_theme_contrast_ratios": {
+    "light": {
+      "primary": 5.21,
+      "secondary": 2.81,
+      "accent": 2.81,
+      "destructive": 3.76
+    },
+    "dark": {
+      "primary": 7.04,
+      "secondary": 11.28,
+      "accent": 14.56,
+      "destructive": 7.59
+    }
+  },
+  "contrast_note": "Raw source-token ratios only. Component opacity modifiers and fixed text-white recipes follow upstream shadcn source. No blanket AA claim."
+}

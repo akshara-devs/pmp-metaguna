@@ -89,7 +89,7 @@ Open <http://localhost:8000> for the React frontend or <http://localhost:8000/ad
 
 The `setup` service waits for MySQL, creates a persistent application key on the first run, and applies migrations. The `app` and `queue` services start after setup succeeds. The MySQL database is `project_pmp`, with user `root` and an empty password, inside the Compose network. MySQL has no published host port. This configuration is for local development only.
 
-The containers use their own database configuration and application key. Your host `.env`, dependencies, and database are not copied into the image. Database data and Laravel storage persist in named volumes across `docker compose down` and rebuilds.
+Compose reads the application and MySQL settings from `code/.env`. The host `.env` and dependencies are not copied into the image, and the application key is stored separately in a named volume. Database data and Laravel storage persist in named volumes across `docker compose down` and rebuilds.
 
 Source files are copied into the image. After changing PHP or frontend code, rebuild with:
 

@@ -6,21 +6,21 @@ x-app: &app
     image: project-pmp-app:local
     init: true
     environment:
-        APP_NAME: Project PMP
-        APP_ENV: local
-        APP_DEBUG: 'true'
-        APP_URL: http://localhost:${APP_PORT:-8000}
-        LOG_CHANNEL: stderr
-        DB_CONNECTION: mysql
-        DB_HOST: mysql
-        DB_PORT: '3306'
-        DB_DATABASE: project_pmp
-        DB_USERNAME: root
-        DB_PASSWORD: ''
-        SESSION_DRIVER: database
-        CACHE_STORE: database
-        QUEUE_CONNECTION: database
-        MAIL_MAILER: log
+        APP_NAME: ${APP_NAME}
+        APP_ENV: ${APP_ENV}
+        APP_DEBUG: ${APP_DEBUG}
+        APP_URL: ${APP_URL}
+        LOG_CHANNEL: ${LOG_CHANNEL}
+        DB_CONNECTION: ${DB_CONNECTION}
+        DB_HOST: ${DB_HOST}
+        DB_PORT: ${DB_PORT}
+        DB_DATABASE: ${DB_DATABASE}
+        DB_USERNAME: ${DB_USERNAME}
+        DB_PASSWORD: ${DB_PASSWORD}
+        SESSION_DRIVER: ${SESSION_DRIVER}
+        CACHE_STORE: ${CACHE_STORE}
+        QUEUE_CONNECTION: ${QUEUE_CONNECTION}
+        MAIL_MAILER: ${MAIL_MAILER}
     volumes:
         - app-storage:/var/www/html/storage
 
@@ -28,9 +28,9 @@ services:
     mysql:
         image: mysql:8.4
         environment:
-            MYSQL_DATABASE: project_pmp
-            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-            MYSQL_ROOT_HOST: '%'
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ALLOW_EMPTY_PASSWORD: ${MYSQL_ALLOW_EMPTY_PASSWORD}
+            MYSQL_ROOT_HOST: ${MYSQL_ROOT_HOST}
         command: ['--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
         volumes:
             - mysql-data:/var/lib/mysql
@@ -41,7 +41,7 @@ services:
                     'mysql',
                     '--host=127.0.0.1',
                     '--user=root',
-                    'project_pmp',
+                    '${DB_DATABASE}',
                     '--execute=SELECT 1',
                 ]
             interval: 5s
@@ -61,7 +61,7 @@ services:
     app:
         <<: *app
         ports:
-            - '127.0.0.1:${APP_PORT:-8000}:8000'
+            - '127.0.0.1:${APP_PORT}:8000'
         depends_on:
             setup:
                 condition: service_completed_successfully

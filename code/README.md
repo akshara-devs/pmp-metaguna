@@ -4,9 +4,79 @@ The application uses Laravel 13, Filament 5, React 19 with Inertia 3, TypeScript
 
 The React frontend uses the light and dark [Shark Theme from tweakcn](https://tweakcn.com/themes/cmqfccy22000504l8fld0fkop). Its original tokens are saved in `../docs/design-system/`, and the active theme is in `resources/css/app.css`. Fonts are bundled locally. Filament uses its own theme at `/admin`.
 
-## Run with Docker Compose
+## Install Docker on Windows
 
-Install Docker with Compose support and use Linux containers.
+Use [Docker Desktop for Windows](https://docs.docker.com/desktop/setup/install/windows-install/) with the WSL 2 backend and Linux containers.
+
+1. Open PowerShell as administrator and install WSL if it is not already installed:
+
+    ```powershell
+    wsl --install
+    ```
+
+2. Restart Windows if prompted, then update WSL:
+
+    ```powershell
+    wsl --update
+    wsl --version
+    ```
+
+3. Install Docker Desktop using the linked Windows instructions, then start it and wait for the engine to be ready. Enable **Use the WSL 2 based engine** in Docker Desktop settings. If you run commands inside a WSL distribution, enable that distribution under **Resources > WSL Integration**.
+4. Open a new terminal and verify Docker:
+
+    ```powershell
+    docker version
+    docker compose version
+    docker run --rm hello-world
+    ```
+
+Continue with the app commands below in PowerShell or your integrated WSL terminal.
+
+## Install Docker on Linux
+
+For Ubuntu and Ubuntu-based Linux Mint, follow [Docker's Ubuntu installation guide](https://docs.docker.com/engine/install/ubuntu/). Mint is an Ubuntu derivative and is not officially supported by Docker, though the Ubuntu packages may work. For Linux Mint Debian Edition, use the [Debian guide](https://docs.docker.com/engine/install/debian/) instead. For other distributions, use the matching [Docker Engine installation guide](https://docs.docker.com/engine/install/).
+
+If Docker is already installed, check `docker version` and `docker compose version` first. For a fresh Ubuntu or Ubuntu-based Mint installation, remove conflicting packages as described in the linked guide, then add Docker's package repository:
+
+```sh
+sudo apt update
+sudo apt install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+sudo tee /etc/apt/sources.list.d/docker.sources > /dev/null <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+Components: stable
+Architectures: $(dpkg --print-architecture)
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo systemctl enable --now docker
+sudo docker run --rm hello-world
+```
+
+To run the app's Docker commands without `sudo`, add your user to the Docker group:
+
+```sh
+sudo usermod -aG docker "$USER"
+```
+
+Sign out and back in, then verify access:
+
+```sh
+docker version
+docker compose version
+docker run --rm hello-world
+```
+
+Membership in the Docker group grants root-level privileges. If you keep using `sudo`, prefix the app's Docker commands with `sudo` too.
+
+## Run with Docker Compose
 
 Start Docker, open a terminal in `code`, then run:
 

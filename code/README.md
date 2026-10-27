@@ -1,4 +1,8 @@
-# Run Project PMP with Docker
+# Run Project PMP
+
+For Windows 10 version 1809, build 17763.3469, follow [Run on Windows with free Laravel Herd and XAMPP MySQL](WINDOWS.md).
+
+The Docker instructions below are a separate setup option.
 
 The application uses Laravel 13, Filament 5, React 19 with Inertia 3, TypeScript, Tailwind CSS 4, shadcn/ui, and MySQL. Vite+ runs frontend development, production builds, formatting, linting, and type checks.
 

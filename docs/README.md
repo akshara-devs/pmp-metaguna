@@ -10,12 +10,12 @@ Aturan awal adalah maksimal 2 buku per mahasiswa, masa pinjam 5 hari kalender, d
 
 | Berkas | Kegunaan |
 | --- | --- |
-| [BRD PDF](BRD-perpus-merah-putih.pdf) | BRD ringkas versi 1.3, enam bab sesuai referensi. |
+| [BRD PDF](BRD-perpus-merah-putih.pdf) | BRD versi 1.3, enam bab sesuai referensi dan ERD lengkap pada bagian 5.3 dalam satu lembar A3 landscape. |
 | [BRD Word](BRD-perpus-merah-putih.docx) | Dokumen editable dengan daftar isi otomatis dan border pada seluruh sel tabel. |
 | [BRD Markdown](BRD-perpus-merah-putih.md) | Sumber isi BRD. |
 | [Spesifikasi detail](Spesifikasi-detail.md) | Aturan, hak akses, kebutuhan, dan skenario penerimaan. |
 | [Kamus data](Kamus-data.md) | Atribut, relasi, dan batasan tujuh entitas. |
-| [Diagram PDF](Diagram-Perpus-Merah-Putih.pdf) | Tiga ERD Crow's Foot dan lima sequence diagram. |
+| [Diagram PDF](Diagram-Perpus-Merah-Putih.pdf) | Satu ERD lengkap, tiga tampilan detail Crow's Foot, dan lima sequence diagram. |
 | [Diagram HTML](diagram-perpustakaan.html) | Galeri diagram yang dapat diperbesar. |
 | [FigCraft diagram](<Perpus Merah Putih — BRD dan diagram.figcraft>) | Sumber diagram dengan teks dan bentuk yang dapat diedit. |
 | [FigCraft aplikasi](<Perpus Merah Putih.figcraft>) | Design system serta layar aplikasi. |
@@ -33,8 +33,9 @@ Referensi BRD awal dan acuan warna diagram berada di `reference/`. Warna antarmu
 Prasyarat: Python, uv, pandoc, FigCraft CLI, serta Microsoft Word di macOS untuk memperbarui nomor halaman daftar isi dan PDF BRD.
 
 ```sh
-uv run --with markdown --with beautifulsoup4 --with reportlab --with lxml python -B tools/build_documents.py
+uv run --with markdown --with beautifulsoup4 --with reportlab --with lxml --with pillow python -B tools/build_documents.py
 osascript tools/refresh_word_toc.applescript "$PWD/docs/BRD-perpus-merah-putih.docx" "$PWD/docs/BRD-perpus-merah-putih.pdf"
+uv run --with pypdf python -B tools/layout_brd_erd.py
 python3 -B tools/export_model_documents.py
 uv run --with pypdf python -B tools/export_book_ui.py
 uv run --with pypdf python -B tools/export_design_system.py

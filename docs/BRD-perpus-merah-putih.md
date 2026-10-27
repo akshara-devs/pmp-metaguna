@@ -140,7 +140,15 @@ Batas pengambilan dan jatuh tempo berlaku sampai akhir tanggal yang ditetapkan d
 6. **NFR-06. Ketepatan waktu.** Perhitungan jatuh tempo, pengambilan, dan keterlambatan konsisten dalam zona waktu Asia/Jakarta.
 7. **NFR-07. Riwayat aktivitas.** Sistem menyimpan pelaku dan waktu transaksi penting agar perubahan dapat ditelusuri.
 
-Target tersebut menjadi acuan pengujian saat implementasi. Aplikasi belum dibangun atau diuji. Rincian aturan, skenario penerimaan, dan hubungan kebutuhan dengan diagram tersedia pada dokumen Spesifikasi-detail.md. ERD dan diagram sequence disediakan terpisah.
+Target tersebut menjadi acuan pengujian saat implementasi. Aplikasi belum dibangun atau diuji. ERD lengkap tersedia pada bagian 5.3.
+
+### 5.3. Entity Relationship Diagram
+
+ERD berikut menggabungkan seluruh 7 tabel dan 12 relasi dalam satu diagram. Setiap tabel menampilkan seluruh atribut, tipe data, dan kuncinya. PK adalah primary key, FK adalah foreign key, UK adalah unique key, dan tanda ? menunjukkan nilai yang boleh kosong. Simbol Crow's Foot menunjukkan tepat satu, nol atau satu, serta nol atau banyak.
+
+Satu data buku mewakili satu buku fisik dengan ISBN wajib dan unik. Setiap pengajuan menghasilkan paling banyak satu pinjaman dan setiap pinjaman memiliki paling banyak satu denda. Kebijakan disimpan per versi. Foreign key petugas merujuk pengguna dengan peran `LIBRARIAN`.
+
+![ERD lengkap. Seluruh tabel dan relasi](diagrams/01-erd-lengkap.png)
 
 ## 6. Acknowledgement & Approval
 

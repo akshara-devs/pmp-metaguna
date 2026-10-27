@@ -283,17 +283,19 @@ def build_brd_exports():
     from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
     from reportlab.lib.enums import TA_LEFT
     from reportlab.lib.pagesizes import A4
-    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, KeepTogether
+    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, KeepTogether, Image
 
     src = DOCS / 'BRD-perpus-merah-putih.md'
     rendered=markdown.markdown(src.read_text(),extensions=['tables'])
-    css=f'body{{font-family:Roboto,Arial,sans-serif;color:{INK};max-width:1000px;margin:40px auto;line-height:1.6;padding:0 20px}}h1,h2,h3,h4{{font-family:Inter,Arial,sans-serif}}h1,h2{{color:{ACCENT}}}table{{border-collapse:collapse;width:100%;font-size:14px;margin:20px 0}}th,td{{border:1px solid #ccd8dc;text-align:left;padding:10px;vertical-align:top}}th{{background:{SURFACE}}}a{{color:{ACCENT}}}@media print{{body{{margin:0;max-width:none}}h2,h3{{break-after:avoid}}tr{{break-inside:avoid}}}}'
+    css=f'body{{font-family:Roboto,Arial,sans-serif;color:{INK};max-width:1000px;margin:40px auto;line-height:1.6;padding:0 20px}}h1,h2,h3,h4{{font-family:Inter,Arial,sans-serif}}h1,h2{{color:{ACCENT}}}table{{border-collapse:collapse;width:100%;font-size:14px;margin:20px 0}}th,td{{border:1px solid #ccd8dc;text-align:left;padding:10px;vertical-align:top}}th{{background:{SURFACE}}}img{{display:block;max-width:100%;height:auto;margin:20px auto}}a{{color:{ACCENT}}}@media print{{body{{margin:0;max-width:none}}h2,h3{{break-after:avoid}}tr{{break-inside:avoid}}}}'
     (DOCS/'BRD-perpus-merah-putih.html').write_text(f'<!doctype html><html lang="id"><head><meta charset="utf-8"><title>BRD Perpus Merah Putih</title><link href="{FONT_LINK.replace("&","&amp;")}" rel="stylesheet"><style>{css}</style></head><body>{rendered}</body></html>')
-    subprocess.run(['pandoc',str(src),'-o',str(DOCS/'BRD-perpus-merah-putih.docx'),'--metadata','lang=id-ID'],check=True)
+    subprocess.run(['pandoc',str(src),'-o',str(DOCS/'BRD-perpus-merah-putih.docx'),'--metadata','lang=id-ID','--resource-path',str(DOCS)],check=True)
     from update_docx_toc import update_toc
     update_toc(DOCS / 'BRD-perpus-merah-putih.docx')
     from style_brd_cover import style_cover
     style_cover(DOCS / 'BRD-perpus-merah-putih.docx')
+    from layout_brd_erd import layout_erd
+    layout_erd(DOCS / 'BRD-perpus-merah-putih.docx')
 
     styles=getSampleStyleSheet()
     styles.add(ParagraphStyle(name='BodyID',fontName='Helvetica',fontSize=9.5,leading=14,spaceAfter=7,textColor=colors.HexColor(INK)))
@@ -317,7 +319,20 @@ def build_brd_exports():
         if name in ['h1','h2','h3','h4']:
             story.append(Paragraph(element.get_text(),styles['Heading'+name[1]]))
         elif name=='p':
-            story.append(Paragraph(clean(element),styles['BodyID']))
+            image = element.find('img')
+            if image is not None:
+                from PIL import Image as RasterImage
+
+                image_path = DOCS / image['src']
+                with RasterImage.open(image_path) as raster:
+                    width, height = raster.size
+
+                scale = min(507 / width, 570 / height)
+                story.append(Image(str(image_path), width=width * scale, height=height * scale))
+                story.append(Paragraph(escape(image.get('alt', '')), styles['CellID']))
+                story.append(Spacer(1, 10))
+            else:
+                story.append(Paragraph(clean(element),styles['BodyID']))
         elif name in ['ul','ol']:
             for i,li in enumerate(element.find_all('li',recursive=False)):
                 prefix=f'{i+1}.' if name=='ol' else '-'
@@ -350,14 +365,16 @@ def build_gallery():
         title=re.search(r'<title[^>]*>(.*?)</title>',content).group(1)
         figures.append(f'<section><h2>{title}</h2><div class="diagram-scroll">{content}</div></section>')
     css='body{margin:0;color:#003E51;background:#FAFAF7;font-family:Roboto,Arial,sans-serif}main{padding:32px}h1,h2{font-family:Inter,Arial,sans-serif}h1{font-size:30px}h2{font-size:20px}section{margin-top:32px}.diagram-scroll{overflow-x:auto;border:1px solid #ccd8dc}svg{display:block;min-width:1200px;width:100%;height:auto}p{max-width:850px;line-height:1.6}'
-    (DOCS/'diagram-perpustakaan.html').write_text(f'<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Diagram Perpus Merah Putih</title><link href="{FONT_LINK.replace("&","&amp;")}" rel="stylesheet"><style>{css}</style></head><body><main><h1>Diagram Perpus Merah Putih</h1><p>Tiga lembar ERD dan lima diagram sequence. Gulir di dalam setiap diagram untuk membaca pada ukuran asli. Warna mengikuti situs Metaguna. Berkas SVG, Mermaid, dan FigCraft tersedia terpisah.</p>{"".join(figures)}</main></body></html>')
+    (DOCS/'diagram-perpustakaan.html').write_text(f'<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Diagram Perpus Merah Putih</title><link href="{FONT_LINK.replace("&","&amp;")}" rel="stylesheet"><style>{css}</style></head><body><main><h1>Diagram Perpus Merah Putih</h1><p>Satu ERD lengkap, tiga tampilan detail ERD, dan lima diagram sequence. Gulir di dalam setiap diagram untuk membaca pada ukuran asli. Warna mengikuti situs Metaguna. Berkas SVG, Mermaid, dan FigCraft tersedia terpisah.</p>{"".join(figures)}</main></body></html>')
 
 
 if __name__=='__main__':
     OUT.mkdir(parents=True,exist_ok=True)
     build_er()
+    from build_combined_erd import build_combined_erd
+    build_combined_erd()
     build_sequences()
     build_dictionary()
     build_brd_exports()
     build_gallery()
-    print('Generated BRD exports, dictionary, 3 ERD views, and 5 sequence diagrams.')
+    print('Generated BRD exports, dictionary, 1 complete ERD, 3 detail views, and 5 sequence diagrams.')

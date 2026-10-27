@@ -11,13 +11,13 @@ OUT = ROOT / 'docs/diagrams'
 with ZipFile(FILE) as archive:
     doc = json.loads(archive.read('document.json'))
 
-names = {'01a-erd-koleksi-pengajuan': 'ERD 1/3 · Books and loan requests', '01b-erd-sirkulasi': 'ERD 2/3 · Loans and fines', '01c-erd-kebijakan-petugas': 'ERD 3/3 · Policies and transaction actors'}
+names = {'01-erd-lengkap': 'Complete ERD · Perpus Merah Putih', '01a-erd-koleksi-pengajuan': 'ERD 1/3 · Books and loan requests', '01b-erd-sirkulasi': 'ERD 2/3 · Loans and fines', '01c-erd-kebijakan-petugas': 'ERD 3/3 · Policies and transaction actors'}
 slugs = list(names) + ['02-pengajuan', '03-persetujuan', '04-pengambilan', '05-pengembalian', '06-pelunasan']
 commands = []
 for slug in slugs:
     frame = next(n for n in doc['nodes'].values() if n['type'] == 'frame' and n['name'] == names.get(slug, slug))
     for fmt in ['png', 'pdf']:
-        commands.append({'command': 'file.export', 'params': {'ids': [frame['id']], 'format': fmt, 'path': str(OUT / (slug + '.' + fmt))}})
+        commands.append({'command': 'file.export', 'params': {'ids': [frame['id']], 'format': fmt, 'scale': 2 if slug == '01-erd-lengkap' and fmt == 'png' else 1, 'path': str(OUT / (slug + '.' + fmt))}})
 
 commands.append({'command': 'file.export', 'params': {'format': 'fig', 'path': str(ROOT / 'docs/Perpus-Merah-Putih.fig')}})
 workspace = tempfile.TemporaryDirectory(prefix='pmp-diagram-export-')
@@ -28,6 +28,6 @@ failures = [json.loads(line) for line in result.stdout.splitlines() if line.star
 if result.returncode or failures:
     raise RuntimeError((result.stderr, failures))
 
-print('Exported all 8 diagram PNG/PDF files and the editable experimental Figma copy.')
+print('Exported all 9 diagram PNG/PDF files and the editable experimental Figma copy.')
 
 workspace.cleanup()

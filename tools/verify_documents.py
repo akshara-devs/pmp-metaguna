@@ -29,7 +29,7 @@ assert not any(field[0] in ['quantity', 'stock', 'total_copies', 'inventory_code
 results['model'] = {'entities': 7, 'relationships': 12, 'all_foreign_keys_covered': True}
 
 svg_files = sorted(OUT.glob('*.svg'))
-assert len(svg_files) == 8
+assert len(svg_files) == 9
 for path in svg_files:
     svg = ET.parse(path).getroot()
     assert svg.get('role') == 'img'
@@ -44,10 +44,11 @@ for path in svg_files:
         assert 0 <= float(element.get('x')) <= width
         assert 0 <= float(element.get('y')) <= height
     with Image.open(path.with_suffix('.png')) as image:
-        assert image.size == (int(width), int(height)), (path.name, image.size)
+        scale = 2 if path.stem == '01-erd-lengkap' else 1
+        assert image.size == (int(width) * scale, int(height) * scale), (path.name, image.size)
         image.verify()
     assert len(PdfReader(path.with_suffix('.pdf')).pages) == 1
-results['diagrams'] = {'svg_png_pdf_sets': 8, 'editable_svg_text': True, 'accessible_names': True}
+results['diagrams'] = {'svg_png_pdf_sets': 9, 'editable_svg_text': True, 'accessible_names': True}
 legacy_identifiers = set(LANGUAGE['identifiers'])
 for path in OUT.glob('01*.svg'):
     values = {element.text or '' for element in ET.parse(path).findall('.//s:text', NS)}
@@ -74,6 +75,24 @@ for path in sorted(OUT.glob('*.mmd')):
 assert len(list(OUT.glob('*.mmd'))) == 6
 results['mermaid'] = {'sources': 6, 'sequence_branch_balance': True}
 
+brd_source = (DOCS / 'BRD-perpus-merah-putih.md').read_text()
+erd_images = re.findall(r'!\[ERD [^\]]+\]\((diagrams/[^)]+\.png)\)', brd_source)
+assert erd_images == ['diagrams/01-erd-lengkap.png']
+brd_html = (DOCS / 'BRD-perpus-merah-putih.html').read_text()
+for image_path in erd_images:
+    assert f'src="{image_path}"' in brd_html
+
+embedded_text = {
+    element.text or ''
+    for image_path in erd_images
+    for element in ET.parse((DOCS / image_path).with_suffix('.svg')).findall('.//s:text', NS)
+}
+for entity, spec in MODEL['entities'].items():
+    assert entity in embedded_text
+    assert all(field in embedded_text for field, key, dtype in spec['fields'])
+
+assert all(fk in embedded_text for parent, child, fk, p_kind, c_kind, label in MODEL['relations'])
+
 brd_pdf = PdfReader(DOCS / 'BRD-perpus-merah-putih.pdf')
 brd_text = '\n'.join(page.extract_text() for page in brd_pdf.pages)
 cover_text = re.sub(r'\s+', ' ', brd_pdf.pages[0].extract_text())
@@ -86,10 +105,25 @@ for prefix, count in [('FR', 14), ('NFR', 7)]:
         assert f'{prefix}-{number:02}' in brd_text, (prefix, number)
 for phrase in ['Rp1.000', '5 hari', '2 hari', 'Acknowledgement & Approval']:
     assert phrase in brd_text, phrase
+assert sum(len(page.images) for page in brd_pdf.pages) >= len(erd_images)
+for heading in ['5.3. Entity Relationship Diagram']:
+    assert heading in brd_text
+
 with ZipFile(DOCS / 'BRD-perpus-merah-putih.docx') as docx:
+    word_images = [docx.read(name) for name in docx.namelist() if name.startswith('word/media/')]
+    for image_path in erd_images:
+        assert (DOCS / image_path).read_bytes() in word_images
+
+    results['brd_erd'] = {'embedded_views': 1, 'entities': 7, 'relationships': 12, 'formats': ['Markdown', 'HTML', 'Word', 'PDF']}
     document_xml = ET.fromstring(docx.read('word/document.xml'))
     word_ns = {'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main'}
     word_attr = '{' + word_ns['w'] + '}'
+    assert len(word_images) == 1, 'The BRD must embed only the combined ERD.'
+    landscape = document_xml.findall('.//w:sectPr/w:pgSz', word_ns)
+    assert sum(size.get(word_attr + 'orient') == 'landscape' for size in landscape) == 1
+    erd_pdf_pages = [page for page in brd_pdf.pages if page.images]
+    assert len(erd_pdf_pages) == 1
+    assert float(erd_pdf_pages[0].mediabox.width) > float(erd_pdf_pages[0].mediabox.height)
     tables = document_xml.findall('.//w:tbl', word_ns)
     assert len(tables) == 5
     for table in tables:
@@ -148,13 +182,13 @@ with ZipFile(DOCS / 'BRD-perpus-merah-putih.docx') as docx:
 
     results['word_contents'] = {'native_toc_fields': 1, 'heading_levels': 3, 'populated_linked_entries': len(toc_entries), 'dot_leaders': True, 'page_numbers_cached': True}
 combined = PdfReader(DOCS / 'Diagram-Perpus-Merah-Putih.pdf')
-assert len(combined.pages) == 8
-results['documents'] = {'brd_pdf_pages': len(brd_pdf.pages), 'diagram_pdf_pages': 8, 'docx_xml_valid': True}
+assert len(combined.pages) == 9
+results['documents'] = {'brd_pdf_pages': len(brd_pdf.pages), 'diagram_pdf_pages': 9, 'docx_xml_valid': True}
 
 with ZipFile(ROOT / 'docs' / 'Perpus Merah Putih — BRD dan diagram.figcraft') as native:
     assert native.testzip() is None
     document = json.loads(native.read('document.json'))
-    assert len(document['pages']) == 5
+    assert len(document['pages']) == 6
     text_nodes = [node for node in document['nodes'].values() if node.get('type', '').lower() == 'text']
     assert len(text_nodes) > 200
     for node in text_nodes:
@@ -162,7 +196,16 @@ with ZipFile(ROOT / 'docs' / 'Perpus Merah Putih — BRD dan diagram.figcraft') 
     assert not any('book_copies' in node.get('characters','') or 'book_copy_id' in node.get('characters','') for node in text_nodes)
     assert any(node.get('characters') == 'Web PMP' for node in text_nodes)
     assert any(node.get('characters') == 'Simpan sebagai WAITING atau QUEUED' for node in text_nodes)
-    results['figcraft'] = {'pages': 5, 'editable_text_nodes': len(text_nodes)}
+    complete_page = next(document['nodes'][str(page)] for page in document['pages'] if document['nodes'][str(page)]['name'] == '06 · Complete ERD')
+    complete_frame = next(node for node in document['nodes'].values() if node.get('name') == 'Complete ERD · Perpus Merah Putih' and node.get('type') == 'frame')
+    assert complete_frame['id'] in complete_page['children']
+    descendants = set(complete_frame['children'])
+    complete_text = [node.get('characters', '') for key, node in document['nodes'].items() if node['id'] in descendants and node.get('type') == 'text']
+    for entity, spec in MODEL['entities'].items():
+        assert complete_text.count(entity) == 1
+        assert all(field in complete_text for field, key, dtype in spec['fields'])
+
+    results['figcraft'] = {'pages': 6, 'editable_text_nodes': len(text_nodes)}
 
 with ZipFile(DOCS / 'Perpus-Merah-Putih-dokumen.zip') as bundle:
     assert bundle.testzip() is None

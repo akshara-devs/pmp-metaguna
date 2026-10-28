@@ -73,14 +73,14 @@ services:
             start_period: 10s
         restart: unless-stopped
 
-    queue:
-        <<: *app
-        command: ['php', 'artisan', 'queue:work', '--tries=3', '--timeout=60', '--sleep=3']
-        depends_on:
-            setup:
-                condition: service_completed_successfully
-        stop_grace_period: 70s
-        restart: unless-stopped
+# queue:
+#     <<: *app
+#     command: ['php', 'artisan', 'queue:work', '--tries=3', '--timeout=60', '--sleep=3']
+#     depends_on:
+#         setup:
+#             condition: service_completed_successfully
+#     stop_grace_period: 70s
+#     restart: unless-stopped
 
 volumes:
     mysql-data:

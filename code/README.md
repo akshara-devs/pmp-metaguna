@@ -95,11 +95,33 @@ The `setup` service waits for MySQL, creates a persistent application key on the
 
 Compose reads the application and MySQL settings from `code/.env`. The host `.env` and dependencies are not copied into the image, and the application key is stored separately in a named volume. Database data and Laravel storage persist in named volumes across `docker compose down` and rebuilds.
 
-Source files are copied into the image. After changing PHP or frontend code, rebuild with:
+The `app` and `database` folders are mounted from your project. Files generated in these folders are saved directly on your computer. Other source files, dependencies, and frontend assets are copied into the image. Rebuild after changing those files:
 
 ```sh
 docker compose up --build -d --wait
 ```
+
+If the app container was created before the source mounts were added, recreate it once:
+
+```sh
+docker compose up -d --no-deps --force-recreate app
+```
+
+In PowerShell, use `artisan.ps1` from `code` to run Artisan commands in the app container:
+
+```powershell
+.\artisan.ps1 make:model Book --migration --no-interaction
+.\artisan.ps1 migrate:status
+```
+
+In Bash on Linux, use `artisan.sh`:
+
+```bash
+./artisan.sh make:model Book --migration --no-interaction
+./artisan.sh migrate:status
+```
+
+Both shortcuts forward arguments to `docker compose exec --user root app php artisan` and return its exit code. Running generators as root lets them write source files. The app service continues to run as `www-data`.
 
 To use another web port, create or update `code/.env` with `APP_PORT=8080` before starting Compose. The container still listens on port 8000 and serves the compiled frontend assets.
 

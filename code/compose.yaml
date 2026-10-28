@@ -23,6 +23,8 @@ x-app: &app
         MAIL_MAILER: ${MAIL_MAILER}
     volumes:
         - app-storage:/var/www/html/storage
+        - ./app:/var/www/html/app
+        - ./database:/var/www/html/database
 
 services:
     mysql:

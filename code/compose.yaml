@@ -22,13 +22,17 @@ x-app: &app
         QUEUE_CONNECTION: ${QUEUE_CONNECTION}
         MAIL_MAILER: ${MAIL_MAILER}
     volumes:
+        - .:/var/www/html
         - app-storage:/var/www/html/storage
-        - ./app:/var/www/html/app
-        - ./database:/var/www/html/database
+        - app-vendor:/var/www/html/vendor
+        - app-build:/var/www/html/public/build
+        - app-bootstrap-cache:/var/www/html/bootstrap/cache
 
 services:
     mysql:
         image: mysql:8.4
+        ports:
+            - '127.0.0.1:3307:3306'
         environment:
             MYSQL_DATABASE: ${DB_DATABASE}
             MYSQL_ALLOW_EMPTY_PASSWORD: ${MYSQL_ALLOW_EMPTY_PASSWORD}
@@ -67,6 +71,7 @@ services:
 
     setup:
         <<: *app
+        user: root
         command: ['setup']
         depends_on:
             mysql:
@@ -100,3 +105,6 @@ services:
 volumes:
     mysql-data:
     app-storage:
+    app-vendor:
+    app-build:
+    app-bootstrap-cache:

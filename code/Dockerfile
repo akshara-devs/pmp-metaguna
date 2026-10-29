@@ -40,6 +40,7 @@ FROM php-base AS app
 
 COPY --from=backend /var/www/html .
 COPY --from=frontend /app/public/build ./public/build
+COPY --from=frontend /app/public/build /opt/frontend-build
 
 RUN ln -s storage/app/private/docker.env .env \
     && chown -R www-data:www-data storage bootstrap/cache

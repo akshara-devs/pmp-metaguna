@@ -95,16 +95,18 @@ The `setup` service waits for MySQL, creates a persistent application key on the
 
 Compose reads the application and MySQL settings from `code/.env`. The host `.env` and dependencies are not copied into the image, and the application key is stored separately in a named volume. Database data and Laravel storage persist in named volumes across `docker compose down` and rebuilds.
 
-The `app` and `database` folders are mounted from your project. Files generated in these folders are saved directly on your computer. Other source files, dependencies, and frontend assets are copied into the image. Rebuild after changing those files:
+The entire `code` directory is mounted at `/var/www/html`. Source files created or edited inside the container appear on your computer, including files in `resources`, `routes`, and `config`. Laravel storage, `vendor`, compiled frontend assets in `public/build`, and `bootstrap/cache` use named volumes instead of host folders.
+
+The setup service installs PHP dependencies from the lockfile and refreshes compiled frontend assets from the image. Docker keeps its existing application key in the storage volume and exports it when starting Laravel. Rebuild after changing frontend source, npm dependencies, or the Dockerfile:
 
 ```sh
 docker compose up --build -d --wait
 ```
 
-If the app container was created before the source mounts were added, recreate it once:
+After changing the volume configuration, rebuild and recreate the services:
 
 ```sh
-docker compose up -d --no-deps --force-recreate app
+docker compose up --build -d --wait
 ```
 
 In PowerShell, use `artisan.ps1` from `code` to run Artisan commands in the app container:
